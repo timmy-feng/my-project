@@ -1,16 +1,17 @@
 export async function loginUser(credentials) {
-    const result = await fetch('http://localhost:3000/user/login', {
+    const result = await fetch('/user/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(credentials),
     });
+    console.log('hey');
     return await result.json();
 }
 
 export async function registerUser(credentials) {
-    const result = await fetch('http://localhost:3000/user/register', {
+    const result = await fetch('/user/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -24,6 +25,6 @@ export async function registerUser(credentials) {
 }
 
 export async function getUsername(token) {
-    const result = await fetch('http://localhost:3000/user/username?' + new URLSearchParams({token}));
+    const result = await fetch('/user/username?' + new URLSearchParams({token}));
     return await result.json();
 }

@@ -1,6 +1,6 @@
 class PinRequester {
     async getPins(token) {
-        const result = await fetch('http://localhost:3000/marker/listing?' + new URLSearchParams({token}));
+        const result = await fetch('/marker/listing?' + new URLSearchParams({token}));
         if (!result.ok) {
             console.log(result.statusText);
             return [];
@@ -9,7 +9,7 @@ class PinRequester {
     }
 
     async deletePin(id, token) {
-        const result = await fetch(`http://localhost:3000/marker/delete/${id}?` + new URLSearchParams({token}), { method: 'POST' });
+        const result = await fetch(`/marker/delete/${id}?` + new URLSearchParams({token}), { method: 'POST' });
         if (!result.ok) {
             console.log(result.statusText);
             return null;
@@ -18,7 +18,7 @@ class PinRequester {
     }
 
     async createPin(pin, token) {
-        const result = await fetch('http://localhost:3000/marker/create?' + new URLSearchParams({token}), {
+        const result = await fetch('/marker/create?' + new URLSearchParams({token}), {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ class PinRequester {
     }
 
     async updatePin(pin, id, token) {
-        const result = await fetch(`http://localhost:3000/marker/update/${id}?` + new URLSearchParams({token}), {
+        const result = await fetch(`/marker/update/${id}?` + new URLSearchParams({token}), {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ class PinRequester {
     }
 
     async getPin(id, token) {
-        const result = await fetch(`http://localhost:3000/marker/get/${id}?` + new URLSearchParams({token}));
+        const result = await fetch(`/marker/get/${id}?` + new URLSearchParams({token}));
         if (!result.ok) {
             console.log(result.statusText);
             return null;
@@ -57,7 +57,7 @@ class PinRequester {
     }
 
     async getPinsByTag(tag, token) {
-        const result = await fetch(`http://localhost:3000/marker/tag/${tag}?` + new URLSearchParams({token}));
+        const result = await fetch(`/marker/tag/${tag}?` + new URLSearchParams({token}));
         return await result.json();
     }
 }
